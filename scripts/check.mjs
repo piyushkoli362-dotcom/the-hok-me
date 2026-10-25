@@ -27,6 +27,9 @@ for (const token of ['#0b0d0f','#15181b','#fff','#a5abb2','#c6ff4d','#30353a','S
 const migration = fs.readFileSync('supabase/migrations/202610250001_owner_leads.sql', 'utf8');
 for (const marker of ['enable row level security','submit_public_inquiry','claim_google_sheets_outbox','service_role','log_owner_lead_export']) if (!migration.toLowerCase().includes(marker.toLowerCase())) throw new Error(`Owner data migration missing security/lead capability: ${marker}`);
 const careers = fs.readFileSync('script.js', 'utf8');
-if (!careers.includes("form.dataset.form!=='partners'")) throw new Error('Unsupported career submissions must remain disabled.');
+if (!careers.includes("supportedFormTypes=new Set(['partners','talent'])")) throw new Error('Project and career interest forms must use secure lead storage.');
+for (const page of ['index.html','careers.html']) if (!/name="phone"[^>]*required/.test(fs.readFileSync(page,'utf8'))) throw new Error(`${page} must collect a required phone number.`);
+const ownerExport = fs.readFileSync('lib/server/owner-api/lead-export.js','utf8');
+for (const field of ['email_normalized','phone','service_areas','project_description','consent_version','consented_at']) if (!ownerExport.includes(field)) throw new Error(`Owner CSV export is missing ${field}.`);
 console.log('Public and owner pages, HookMedia metadata, central design tokens, local links, and lead security migration verified.');
 

@@ -12,31 +12,32 @@ const urlOkay = value => {
 
 function validate(body) {
   if (!body || typeof body !== 'object' || Array.isArray(body)) return { error: 'Invalid submission.' };
-  if (body.type !== 'partners') return { error: 'This inquiry form is not supported by the secure project intake yet.' };
+  if (!['partners','talent'].includes(body.type)) return { error: 'This inquiry form is not supported by the secure intake yet.' };
   if (clean(body.companyWebsite)) return { error: 'Submission rejected.' };
   const name = clean(body.name, 120);
   const email = clean(body.email, 254).toLowerCase();
-  if (!name || !emailOkay(email) || body.consent !== true) return { error: 'Name, valid email and consent are required.' };
-  const record = { id: randomUUID(), submittedAt: new Date().toISOString(), type: body.type, name, email, consent: true };
-  if (body.type === 'farmers') Object.assign(record, { state: clean(body.state, 80), district: clean(body.district, 80), category: clean(body.category, 80) });
+  const phone = clean(body.phone, 30);
+  if (!name || !emailOkay(email) || !/^[+()\d .-]{7,30}$/.test(phone) || body.consent !== true) return { error: 'Enter your name, valid email, phone number and consent.' };
+  const record = { id: randomUUID(), submittedAt: new Date().toISOString(), type: body.type, name, email, phone, consent: true };
   if (body.type === 'partners') {
     const area = clean(body.area, 260), message = clean(body.message, 3000);
-    if (!area || !message) return { error: 'Collaboration area and message are required.' };
+    if (!area || !message) return { error: 'Choose at least one service and add a project summary.' };
     const website = clean(body.website, 500);
     if (!urlOkay(website)) return { error: 'Website or social profile must use a valid HTTPS URL.' };
-    const phone = clean(body.phone, 30);
-    if (phone && !/^[+()\d .-]{7,30}$/.test(phone)) return { error: 'Enter a valid phone number.' };
     const contactPreference = clean(body.contactPreference, 40);
     if (contactPreference && !['Email', 'Phone', 'WhatsApp'].includes(contactPreference)) return { error: 'Select a valid contact preference.' };
-    Object.assign(record, { organization: clean(body.organization, 160), area, message, phone, website, budget: clean(body.budget, 80), contactPreference });
+    const organization = clean(body.organization, 160), budget = clean(body.budget, 80);
+    Object.assign(record, { organization, area, message, website, budget, contactPreference });
+    return { record, payload: { type: 'partners', name, email, phone, consent: true, organization, area, message, website, budget, contactPreference } };
   }
-  if (body.type === 'talent') {
-    const role = clean(body.role, 120), motivation = clean(body.motivation, 3000);
-    const linkedin = clean(body.linkedin, 500), portfolio = clean(body.portfolio, 500), resume = clean(body.resume, 500);
-    if (!role || !motivation || ![linkedin, portfolio, resume].every(urlOkay)) return { error: 'Interest area, motivation and valid HTTPS links are required.' };
-    Object.assign(record, { role, motivation, skills: clean(body.skills, 3000), linkedin, portfolio, resume, availability: clean(body.availability, 200), engagement: clean(body.engagement, 100) });
-  }
-  return { record };
+  const role = clean(body.role, 120), motivation = clean(body.motivation, 1200);
+  const skills = clean(body.skills, 800), linkedin = clean(body.linkedin, 300), portfolio = clean(body.portfolio, 300);
+  const availability = clean(body.availability, 100), engagement = clean(body.engagement, 100);
+  if (!role || !motivation || ![linkedin, portfolio].every(urlOkay)) return { error: 'Enter an interest area, motivation and valid HTTPS links.' };
+  const area = `Career / collaboration · ${role}`;
+  const message = [`Motivation: ${motivation}`, skills && `Skills and experience: ${skills}`, linkedin && `LinkedIn: ${linkedin}`, portfolio && `Portfolio or GitHub: ${portfolio}`, availability && `Availability: ${availability}`, engagement && `Preferred engagement: ${engagement}`].filter(Boolean).join('\n');
+  Object.assign(record, { role, motivation, skills, linkedin, portfolio, availability, engagement, area, message });
+  return { record, payload: { type: 'partners', name, email, phone, consent: true, area, message, website: portfolio || linkedin, organization: '', budget: '', contactPreference: '' } };
 }
 
 module.exports = async function submit(req, res) {
@@ -48,7 +49,7 @@ module.exports = async function submit(req, res) {
   if (!origin || !host || origin !== `https://${host}`) return res.status(403).json({ error: 'Origin rejected.' });
   if (!String(req.headers['content-type'] || '').startsWith('application/json')) return res.status(415).json({ error: 'JSON is required.' });
   if (Number(req.headers['content-length'] || 0) > 16_384 || JSON.stringify(req.body || '').length > 16_384) return res.status(413).json({ error: 'Submission is too large.' });
-  const { record, error } = validate(req.body);
+  const { record, payload, error } = validate(req.body);
   if (error) return res.status(400).json({ error });
   const url = process.env.SUPABASE_URL;
   const serviceKey = supabaseSecretKey();
@@ -60,7 +61,7 @@ module.exports = async function submit(req, res) {
     if (!address) return res.status(503).json({ error: 'Inquiry protection is temporarily unavailable.' });
     const ipHash = createHmac('sha256', hashSecret).update(address).digest('hex');
     const supabase = createClient(url, serviceKey, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
-    const { data: reference, error } = await supabase.rpc('submit_public_inquiry', { p_payload: req.body, p_ip_hash: ipHash });
+    const { data: reference, error } = await supabase.rpc('submit_public_inquiry', { p_payload: payload, p_ip_hash: ipHash });
     if (error) {
       if (error.code === 'P0001') return res.status(429).json({ error: 'Please wait before submitting another inquiry.' });
       if (error.code === '22023') return res.status(400).json({ error: 'Please review your inquiry details and try again.' });

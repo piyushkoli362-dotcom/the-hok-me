@@ -19,10 +19,14 @@ const request = (body, origin = 'https://thehookmedia.example') => ({ method: 'P
   const validate = validationModule.exports.validate;
   if (validate({ type: 'partners', name: 'A', email: 'bad', consent: true }).record) throw new Error('Invalid email must be rejected');
   const validInquiry = { type: 'partners', name: 'A', email: 'a@example.com', area: 'AI & automation, Web & apps', message: 'Build a site', phone: '+91 98765 43210', website: 'https://example.com', contactPreference: 'Email', consent: true };
-  if (!validate(validInquiry).record) throw new Error('Valid HookMedia project inquiry must be accepted');
-  if (!validate({ ...validInquiry, type: 'talent', role: 'Designer', motivation: 'Hello' }).error) throw new Error('Unsupported career applications must not enter the project lead table');
+  if (!validate(validInquiry).payload) throw new Error('Valid HookMedia project inquiry must be accepted and mapped to secure storage');
+  if (!validate({ ...validInquiry, phone: '' }).error) throw new Error('A phone number must be required for every inquiry');
+  const career = validate({ type: 'talent', name: 'Taylor', email: 'taylor@example.com', phone: '+91 98765 43210', consent: true, role: 'Designer', skills: 'Brand systems', motivation: 'I would like to collaborate.', linkedin: 'https://linkedin.com/in/taylor', portfolio: 'https://example.com/work', availability: 'Part time', engagement: 'Freelance' });
+  if (!career.payload || career.payload.type !== 'partners' || !career.payload.area.includes('Designer') || !career.payload.message.includes('Brand systems') || career.payload.phone !== '+91 98765 43210') throw new Error('Career interest details must be retained in the owner lead record');
+  const csv = ownerExport.toCsv([{ id: 'lead-1', public_reference: 'HM-1', created_at: '2026-01-01T00:00:00Z', full_name: '=2+2', email_normalized: 'a@example.com', phone: '+91 98765 43210', service_areas: 'AI automation', project_description: 'Build an agent', consent_version: 'privacy-v1', consented_at: '2026-01-01T00:00:00Z' }]);
+  if (!csv.includes('"Lead ID","Reference","Received (UTC)","Name","Email","Phone"') || !csv.includes('"lead-1"') || !csv.includes("\"'=2+2\"") || !csv.includes('"AI automation"') || !csv.includes('"privacy-v1"')) throw new Error('CSV export must include contact, service, consent and formula-safe data');
   if (!validate({ ...validInquiry, website: 'http://example.com' }).error) throw new Error('Non-HTTPS website must be rejected');
-  if (!validate({ ...validInquiry, phone: 'not a number' }).error) throw new Error('Malformed optional phone must be rejected');
+  if (!validate({ ...validInquiry, phone: 'not a number' }).error) throw new Error('Malformed phone number must be rejected');
   if (!validate({ ...validInquiry, companyWebsite: 'spam.example' }).error) throw new Error('Filled honeypot must be rejected');
   if (!validate({ ...validInquiry, contactPreference: 'Telegram' }).error) throw new Error('Unknown contact preference must be rejected');
   const verifiedFactor = { id: 'verified-factor', factor_type: 'totp', status: 'verified' };
