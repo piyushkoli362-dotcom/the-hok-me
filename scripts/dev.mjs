@@ -24,11 +24,11 @@ const dataDir = path.resolve(process.env.CROPTERA_DATA_DIR || path.join(root, 'o
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.txt': 'text/plain; charset=utf-8', '.png': 'image/png', '.jpg': 'image/jpeg' };
 const publicFiles = new Set(['index.html', 'careers.html', 'privacy.html', 'updates.html', '404.html', 'owner.html', 'owner.css', 'owner.js', 'brand-tokens.css', 'styles.css', 'showcase.css', 'script.js', 'robots.txt']);
 const apiHandlers = new Map([
-  ['/api/status', require('../api/status.js')], ['/api/owner/login', require('../api/owner/login.js')],
-  ['/api/owner/logout', require('../api/owner/logout.js')], ['/api/owner/session', require('../api/owner/session.js')],
-  ['/api/owner/mfa', require('../api/owner/mfa.js')], ['/api/owner/dashboard', require('../api/owner/dashboard.js')],
-  ['/api/owner/leads', require('../api/owner/leads.js')], ['/api/owner/integrations', require('../api/owner/integrations.js')],
-  ['/api/owner/sheets-sync', require('../api/owner/sheets-sync.js')], ['/api/owner/leads/export', require('../api/owner/leads/export.js')],
+  ['/api/status', require('../api/status.js')], ['/api/owner/login', require('../lib/server/owner-api/login.js')],
+  ['/api/owner/logout', require('../lib/server/owner-api/logout.js')], ['/api/owner/session', require('../lib/server/owner-api/session.js')],
+  ['/api/owner/mfa', require('../lib/server/owner-api/mfa.js')], ['/api/owner/dashboard', require('../lib/server/owner-api/dashboard.js')],
+  ['/api/owner/leads', require('../lib/server/owner-api/lead-list.js')], ['/api/owner/integrations', require('../lib/server/owner-api/integrations.js')],
+  ['/api/owner/sheets-sync', require('../lib/server/owner-api/sheets-sync.js')], ['/api/owner/leads/export', require('../lib/server/owner-api/lead-export.js')],
   ['/api/cron/sheets-sync', require('../api/cron/sheets-sync.js')]
 ]);
 const rateLimits = new Map();
@@ -42,8 +42,8 @@ async function dispatchApi(req, res, pathname, searchParams) {
   let handler = apiHandlers.get(pathname), params = {};
   const noteMatch = pathname.match(/^\/api\/owner\/leads\/([^/]+)\/notes$/);
   const leadMatch = pathname.match(/^\/api\/owner\/leads\/([^/]+)$/);
-  if (!handler && noteMatch) { handler = require('../api/owner/leads/[id]/notes.js'); params.id = decodeURIComponent(noteMatch[1]); }
-  if (!handler && leadMatch) { handler = require('../api/owner/leads/[id].js'); params.id = decodeURIComponent(leadMatch[1]); }
+  if (!handler && noteMatch) { handler = require('../lib/server/owner-api/lead-notes.js'); params.id = decodeURIComponent(noteMatch[1]); }
+  if (!handler && leadMatch) { handler = require('../lib/server/owner-api/lead-detail.js'); params.id = decodeURIComponent(leadMatch[1]); }
   if (!handler) return false;
   let body;
   if (req.method !== 'GET' && req.method !== 'HEAD') {

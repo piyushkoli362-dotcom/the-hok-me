@@ -8,3 +8,5 @@ index-before-showcase.html.bak
 outputs/
 .env*
 !.env.example
+
+.vercel

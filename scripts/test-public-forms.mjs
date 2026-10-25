@@ -3,9 +3,9 @@ import { readFileSync } from 'node:fs';
 const require = createRequire(import.meta.url);
 const submit = require('../api/submit.js');
 const status = require('../api/status.js');
-const ownerLogin = require('../api/owner/login.js');
-const ownerLeads = require('../api/owner/leads.js');
-const ownerExport = require('../api/owner/leads/export.js');
+const ownerLogin = require('../lib/server/owner-api/login.js');
+const ownerLeads = require('../lib/server/owner-api/lead-list.js');
+const ownerExport = require('../lib/server/owner-api/lead-export.js');
 const cronSheets = require('../api/cron/sheets-sync.js');
 function response() { return { headers: {}, code: 200, body: null, setHeader(name, value) { this.headers[name] = value; }, status(code) { this.code = code; return this; }, json(body) { this.body = body; return this; } }; }
 function withHeaders() { return { headers: {}, setHeader(name, value) { this.headers[name] = value; }, status(code) { this.code = code; return this; }, json(body) { this.body = body; return this; }, send(body) { this.body = body; return this; } }; }
