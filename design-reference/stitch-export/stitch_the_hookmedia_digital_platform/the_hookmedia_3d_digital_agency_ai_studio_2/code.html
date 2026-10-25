@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The HookMedia — 3D Creative, Growth &amp; AI Lab</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "background": "#111416",
+            "surface-variant": "#333537",
+            "on-secondary-fixed": "#161c22",
+            "error-container": "#93000a",
+            "on-primary-fixed-variant": "#374e00",
+            "primary-container": "#bcf543",
+            "on-secondary": "#2b3137",
+            "secondary-fixed-dim": "#c1c7cf",
+            "surface-tint": "#a2d824",
+            "secondary-fixed": "#dde3eb",
+            "on-primary-fixed": "#141f00",
+            "on-primary-container": "#4f6e00",
+            "tertiary-container": "#e1e2e7",
+            "on-background": "#e2e2e5",
+            "on-tertiary": "#2e3134",
+            "surface-container": "#1e2022",
+            "surface-dim": "#111416",
+            "on-surface": "#e2e2e5",
+            "tertiary-fixed-dim": "#c5c6cb",
+            "on-primary": "#253600",
+            "secondary": "#c1c7cf",
+            "outline": "#8d937c",
+            "tertiary-fixed": "#e1e2e7",
+            "surface-container-lowest": "#0c0e10",
+            "inverse-surface": "#e2e2e5",
+            "on-error": "#690005",
+            "surface-bright": "#37393c",
+            "on-tertiary-fixed": "#191c1f",
+            "primary-fixed": "#bcf543",
+            "tertiary": "#ffffff",
+            "on-surface-variant": "#c3c9b0",
+            "on-error-container": "#ffdad6",
+            "outline-variant": "#434935",
+            "surface": "#111416",
+            "primary-fixed-dim": "#a2d824",
+            "primary": "#ffffff",
+            "surface-container-high": "#282a2c",
+            "on-secondary-fixed-variant": "#41474e",
+            "secondary-container": "#41474e",
+            "on-secondary-container": "#afb6bd",
+            "surface-container-highest": "#333537",
+            "on-tertiary-fixed-variant": "#44474a",
+            "inverse-on-surface": "#2f3133",
+            "surface-container-low": "#1a1c1e",
+            "inverse-primary": "#4a6700",
+            "error": "#ffb4ab",
+            "on-tertiary-container": "#626468"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter-sm": "1rem",
+            "margin-mobile": "1.25rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "margin": "2rem",
+            "gutter": "1.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Space Grotesk"],
+            "title-md": ["Space Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "display-xl-mobile": ["Space Grotesk"],
+            "label-sm": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Space Grotesk"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Space Grotesk"],
+            "display-xl": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+            "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "title-md": ["20px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "500"}],
+            "headline-sm": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display-xl-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.1em", "fontWeight": "500"}],
+            "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+            "body-md": ["15px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "headline-md": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "body-sm": ["13px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600"}],
+            "display-xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Custom infinite marquee animation */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 16s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    /* Kinetic subtle pulse */
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.35; transform: scale(1); }
+      50% { opacity: 0.65; transform: scale(1.05); }
+    }
+    .animate-glow {
+      animation: pulse-glow 4s ease-in-out infinite;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden relative min-h-screen">
+<!-- Floating Ambient Glow Backdrop -->
+<div class="fixed top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary-fixed/5 rounded-full blur-[120px] pointer-events-none -z-10 animate-glow"></div>
+<!-- SHARED COMPONENT: TopAppBar (HUD Style) -->
+<header class="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-7xl rounded-full z-50 bg-surface-container-low/80 backdrop-blur-md border border-outline-variant/40 shadow-2xl shadow-surface-container-lowest/50 flex justify-between items-center px-4 py-2.5">
+<!-- Brand / Monogram Anchor -->
+<a class="flex items-center gap-2.5 active:scale-95 transition-transform duration-150" href="#">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high border border-outline-variant/60 flex items-center justify-center text-primary-fixed font-title-md text-title-md font-bold tracking-tighter shadow-[0_0_12px_rgba(188,245,67,0.2)]">
+        H
+      </div>
+<div class="flex flex-col">
+<span class="text-title-md font-title-md font-bold tracking-tight text-tertiary leading-none">The HookMedia</span>
+<span class="font-label-sm text-[9px] tracking-wider text-primary-fixed flex items-center gap-1 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed inline-block animate-ping"></span>
+          AVAILABLE Q2/Q3
+        </span>
+</div>
+</a>
+<!-- Trailing Action & Mobile Menu Toggle -->
+<div class="flex items-center gap-2">
+<a class="bg-primary-fixed text-on-primary-fixed font-label-md text-label-md px-3.5 py-1.5 rounded-full font-bold shadow-[0_0_18px_rgba(188,245,67,0.35)] active:scale-95 transition-all" href="#inquiry">
+        Start a Project
+      </a>
+<button aria-label="Open Navigation Menu" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-secondary hover:text-tertiary border border-outline-variant/40 active:scale-95 transition-colors" id="menu-toggle">
+<span class="material-symbols-outlined text-lg" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<!-- SHARED COMPONENT: NavigationDrawer Overlay & Shell -->
+<div class="fixed inset-0 bg-surface-container-lowest/80 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300" id="drawer-backdrop"></div>
+<aside class="fixed inset-y-0 right-0 w-80 max-w-[85vw] z-50 bg-surface-container-low border-l border-outline-variant/30 shadow-2xl shadow-surface-container-lowest/80 flex flex-col justify-between p-6 transform translate-x-full transition-transform duration-300 ease-out" id="nav-drawer">
+<div class="flex flex-col gap-6">
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant/20">
+<span class="text-headline-sm font-headline-sm font-bold tracking-tight text-tertiary">THE HOOKMEDIA</span>
+<button aria-label="Close Navigation" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-secondary hover:text-tertiary" id="drawer-close">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+<!-- Nav items mapped from shared component JSON -->
+<nav class="flex flex-col gap-1.5">
+<a class="flex items-center gap-4 px-4 py-3 bg-surface-container-high text-primary-fixed rounded-lg font-semibold font-label-md text-label-md transition-colors" href="#work">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+          Work
+        </a>
+<a class="flex items-center gap-4 px-4 py-3 text-secondary hover:bg-surface-container hover:text-tertiary rounded-lg font-label-md text-label-md transition-colors" href="#services">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+          Capabilities
+        </a>
+<a class="flex items-center gap-4 px-4 py-3 text-secondary hover:bg-surface-container hover:text-tertiary rounded-lg font-label-md text-label-md transition-colors" href="#process">
+<span class="material-symbols-outlined" data-icon="linear_scale">linear_scale</span>
+          Process
+        </a>
+<a class="flex items-center gap-4 px-4 py-3 text-secondary hover:bg-surface-container hover:text-tertiary rounded-lg font-label-md text-label-md transition-colors" href="#ai-intelligence">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+          AI &amp; Intelligence
+        </a>
+<a class="flex items-center gap-4 px-4 py-3 text-secondary hover:bg-surface-container hover:text-tertiary rounded-lg font-label-md text-label-md transition-colors" href="#creed">
+<span class="material-symbols-outlined" data-icon="apartment">apartment</span>
+          Agency
+        </a>
+<a class="flex items-center gap-4 px-4 py-3 text-secondary hover:bg-surface-container hover:text-tertiary rounded-lg font-label-md text-label-md transition-colors" href="#inquiry">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+          Inquiry
+        </a>
+</nav>
+</div>
+<!-- Drawer Footer Quick Telemetry -->
+<div class="pt-4 border-t border-outline-variant/20 flex flex-col gap-2">
+<div class="flex items-center justify-between text-secondary font-label-sm text-label-sm">
+<span>CORE PIPELINE</span>
+<span class="text-primary-fixed font-bold">ONLINE</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary/70">Autonomous 3D creative production &amp; scaling infrastructure.</p>
+</div>
+</aside>
+<!-- MAIN CANVAS -->
+<main class="w-full pt-24 px-4 flex flex-col gap-16 max-w-md mx-auto">
+<!-- 01: HERO SECTION -->
+<section class="flex flex-col gap-4 relative pt-2">
+<!-- Tagline Pill -->
+<div class="inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/50">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">
+          01 // CREATIVE GROWTH STUDIO &amp; AI LAB
+        </span>
+</div>
+<!-- Main Typography Anchor -->
+<h1 class="font-display-xl-mobile text-display-xl-mobile text-tertiary tracking-tight leading-tight">
+        WE MAKE BRANDS <span class="text-primary-fixed underline decoration-primary-fixed/40">IMPOSSIBLE</span> TO IGNORE.
+      </h1>
+<!-- Supporting Body Text -->
+<p class="font-body-md text-body-md text-secondary">
+        From scroll-stopping content and cinematic campaigns to intelligent AI systems, we turn ambitious ideas into digital experiences that move businesses forward.
+      </p>
+<!-- 3D Interactive WebGL Scene -->
+<div class="relative w-full rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 shadow-[0_0_32px_-8px_rgba(188,245,67,0.2)]">
+<!-- Corner precision registration marks -->
+<div class="absolute top-2 left-2 z-10 text-outline-variant font-label-sm text-[10px] select-none">+</div>
+<div class="absolute top-2 right-2 z-10 text-outline-variant font-label-sm text-[10px] select-none">+</div>
+<div class="absolute bottom-2 left-2 z-10 text-outline-variant font-label-sm text-[10px] select-none">+</div>
+<div class="absolute bottom-2 right-2 z-10 text-outline-variant font-label-sm text-[10px] select-none">+</div>
+<!-- Real-time viewport telemetry tag -->
+<div class="absolute top-3 left-4 z-10 flex items-center gap-2 bg-surface-container-lowest/80 backdrop-blur-md px-2.5 py-1 rounded-md border border-outline-variant/30">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed animate-pulse"></span>
+<span class="font-label-sm text-[10px] text-tertiary tracking-widest">REALTIME 3D // 60 FPS</span>
+</div>
+<!-- The 3D Scene Asset -->
+<!-- STITCH_THREEJS_START:ANIMATION_3 class="w-full h-[360px] my-2 relative z-0" -->
+<div class="w-full h-[360px] my-2 relative z-0" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_3" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_3');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  // Three.js interactive 3D hero sculpture for The HookMedia
+// Chrome & glass sculptural orb with metallic faceted rings, lime particle vortex, and floating dimensional nodes
+
+const width = container.clientWidth || window.innerWidth || 390;
+const height = container.clientHeight || 450;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+camera.position.set(0, 0, 5.2);
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.25;
+container.appendChild(renderer.domElement);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+scene.add(ambientLight);
+
+const limeLight = new THREE.PointLight(0xc6ff4d, 5, 20);
+limeLight.position.set(2.5, 3, 2.5);
+scene.add(limeLight);
+
+const cyanLight = new THREE.PointLight(0x00f0ff, 2.5, 15);
+cyanLight.position.set(-3, -2, -2);
+scene.add(cyanLight);
+
+const dirLight = new THREE.DirectionalLight(0xffffff, 1.8);
+dirLight.position.set(1, 4, 3);
+scene.add(dirLight);
+
+// Group
+const rootGroup = new THREE.Group();
+scene.add(rootGroup);
+
+// 1. Core Sculptural Icosahedron / Orb (Chrome Glass look)
+const coreGeo = new THREE.IcosahedronGeometry(1.2, 3);
+const coreMat = new THREE.MeshPhongMaterial({
+  color: 0x1a2126,
+  emissive: 0x051008,
+  specular: 0xc6ff4d,
+  shininess: 120,
+  wireframe: false,
+  flatShading: true,
+  transparent: true,
+  opacity: 0.92
+});
+const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+rootGroup.add(coreMesh);
+
+// Inner Glowing Wireframe Core
+const innerGeo = new THREE.IcosahedronGeometry(0.85, 2);
+const innerMat = new THREE.MeshBasicMaterial({
+  color: 0xc6ff4d,
+  wireframe: true,
+  transparent: true,
+  opacity: 0.35
+});
+const innerMesh = new THREE.Mesh(innerGeo, innerMat);
+rootGroup.add(innerMesh);
+
+// 2. Torus Orbital Ring 1
+const ringGeo1 = new THREE.TorusGeometry(1.8, 0.028, 16, 100);
+const ringMat1 = new THREE.MeshStandardMaterial({
+  color: 0xc6ff4d,
+  emissive: 0x6e991b,
+  metalness: 0.8,
+  roughness: 0.2
+});
+const ringMesh1 = new THREE.Mesh(ringGeo1, ringMat1);
+ringMesh1.rotation.x = Math.PI / 3;
+ringMesh1.rotation.y = Math.PI / 6;
+rootGroup.add(ringMesh1);
+
+// Torus Orbital Ring 2 (Perpendicular chrome ring)
+const ringGeo2 = new THREE.TorusGeometry(2.1, 0.02, 16, 100);
+const ringMat2 = new THREE.MeshStandardMaterial({
+  color: 0x8a9ba8,
+  metalness: 0.9,
+  roughness: 0.1
+});
+const ringMesh2 = new THREE.Mesh(ringGeo2, ringMat2);
+ringMesh2.rotation.x = -Math.PI / 4;
+ringMesh2.rotation.y = Math.PI / 3;
+rootGroup.add(ringMesh2);
+
+// 3. Floating Kinetic Tech Nodes / Geometric Prisms
+const nodeGeo = new THREE.BoxGeometry(0.18, 0.18, 0.18);
+const nodeMat = new THREE.MeshStandardMaterial({
+  color: 0xc6ff4d,
+  metalness: 0.5,
+  roughness: 0.2
+});
+const nodes = [];
+const numNodes = 8;
+for (let i = 0; i < numNodes; i++) {
+  const mesh = new THREE.Mesh(nodeGeo, nodeMat);
+  const angle = (i / numNodes) * Math.PI * 2;
+  const radius = 1.9 + Math.sin(i * 1.5) * 0.4;
+  mesh.position.set(
+    Math.cos(angle) * radius,
+    (Math.sin(i * 2.3) * 0.7),
+    Math.sin(angle) * radius
+  );
+  rootGroup.add(mesh);
+  nodes.push({ mesh, angle, speed: 0.015 + (i % 3) * 0.008, radius, yOffset: mesh.position.y });
+}
+
+// 4. Luminous Particle Dust / Swarm
+const particleCount = 140;
+const particleGeo = new THREE.BufferGeometry();
+const positions = new Float32Array(particleCount * 3);
+const colors = new Float32Array(particleCount * 3);
+
+for (let i = 0; i < particleCount; i++) {
+  const r = 1.3 + Math.random() * 1.8;
+  const theta = Math.random() * Math.PI * 2;
+  const phi = (Math.random() - 0.5) * Math.PI;
+
+  positions[i * 3] = r * Math.cos(phi) * Math.cos(theta);
+  positions[i * 3 + 1] = r * Math.sin(phi);
+  positions[i * 3 + 2] = r * Math.cos(phi) * Math.sin(theta);
+
+  // Mix between electric lime (#C6FF4D: 0.77, 1.0, 0.3) and cool white
+  if (Math.random() > 0.4) {
+    colors[i * 3] = 0.77;
+    colors[i * 3 + 1] = 1.0;
+    colors[i * 3 + 2] = 0.3;
+  } else {
+    colors[i * 3] = 0.8;
+    colors[i * 3 + 1] = 0.9;
+    colors[i * 3 + 2] = 1.0;
+  }
+}
+particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+const particleMat = new THREE.PointsMaterial({
+  size: 0.045,
+  vertexColors: true,
+  transparent: true,
+  opacity: 0.85
+});
+const particleSystem = new THREE.Points(particleGeo, particleMat);
+rootGroup.add(particleSystem);
+
+// Mouse interaction
+let mouseX = 0;
+let mouseY = 0;
+let targetX = 0;
+let targetY = 0;
+
+function onPointerMove(e) {
+  const rect = container.getBoundingClientRect();
+  const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+  const clientY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
+  mouseX = ((clientX - rect.left) / (rect.width || 1) - 0.5) * 2;
+  mouseY = ((clientY - rect.top) / (rect.height || 1) - 0.5) * 2;
+}
+
+window.addEventListener('pointermove', onPointerMove, { passive: true });
+window.addEventListener('touchmove', onPointerMove, { passive: true });
+
+function handleResize() {
+  const w = container.clientWidth || window.innerWidth || 390;
+  const h = container.clientHeight || 450;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+}
+window.addEventListener('resize', handleResize);
+
+// Animation Loop
+let clock = new THREE.Clock();
+let animId;
+
+function animate() {
+  animId = requestAnimationFrame(animate);
+  const elapsedTime = clock.getElapsedTime();
+
+  // Smooth mouse damping
+  targetX += (mouseX - targetX) * 0.05;
+  targetY += (mouseY - targetY) * 0.05;
+
+  rootGroup.rotation.y = elapsedTime * 0.35 + targetX * 0.6;
+  rootGroup.rotation.x = Math.sin(elapsedTime * 0.25) * 0.2 + targetY * 0.4;
+  rootGroup.position.y = Math.sin(elapsedTime * 1.2) * 0.12;
+
+  coreMesh.rotation.y = -elapsedTime * 0.2;
+  innerMesh.rotation.y = elapsedTime * 0.4;
+
+  ringMesh1.rotation.z = elapsedTime * 0.25;
+  ringMesh2.rotation.z = -elapsedTime * 0.18;
+
+  particleSystem.rotation.y = elapsedTime * 0.1;
+
+  nodes.forEach((n, idx) => {
+    n.angle += n.speed;
+    n.mesh.position.x = Math.cos(n.angle) * n.radius;
+    n.mesh.position.z = Math.sin(n.angle) * n.radius;
+    n.mesh.position.y = n.yOffset + Math.sin(elapsedTime * 2 + idx) * 0.15;
+    n.mesh.rotation.x += 0.02;
+    n.mesh.rotation.y += 0.03;
+  });
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// Cleanup on removal
+return function dispose() {
+  cancelAnimationFrame(animId);
+  window.removeEventListener('pointermove', onPointerMove);
+  window.removeEventListener('touchmove', onPointerMove);
+  window.removeEventListener('resize', handleResize);
+  renderer.dispose();
+  if (renderer.domElement && renderer.domElement.parentNode) {
+    renderer.domElement.parentNode.removeChild(renderer.domElement);
+  }
+};
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_3 -->
+</div>
+<!-- Floating Metrics Ticker -->
+<div class="grid grid-cols-3 gap-2 p-3 bg-surface-container-low rounded-xl border border-outline-variant/30 text-center">
+<div class="flex flex-col items-center">
+<span class="font-title-md text-title-md font-bold text-tertiary">120M+</span>
+<span class="font-label-sm text-[10px] text-secondary tracking-wider">REACH</span>
+</div>
+<div class="flex flex-col items-center border-x border-outline-variant/30">
+<span class="font-title-md text-title-md font-bold text-primary-fixed">45+</span>
+<span class="font-label-sm text-[10px] text-secondary tracking-wider">AWARDS</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-title-md text-title-md font-bold text-tertiary">99.4%</span>
+<span class="font-label-sm text-[10px] text-secondary tracking-wider">CLIENT ROI</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-2.5 mt-2">
+<a class="w-full py-3.5 px-6 rounded-xl bg-primary-fixed text-on-primary-fixed font-headline-sm text-sm font-bold flex items-center justify-center gap-2 shadow-[0_0_24px_rgba(188,245,67,0.35)] active:scale-[0.98] transition-transform" href="#inquiry">
+<span>Start a Project</span>
+<span class="material-symbols-outlined text-base" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a class="w-full py-3.5 px-6 rounded-xl bg-surface-container-high/60 backdrop-blur-md border border-outline-variant/40 text-tertiary font-headline-sm text-sm font-semibold flex items-center justify-center gap-2 hover:bg-surface-container-highest active:scale-[0.98] transition-all" href="#work">
+<span>Explore Our Work</span>
+<span class="material-symbols-outlined text-base" data-icon="visibility">visibility</span>
+</a>
+</div>
+</section>
+<!-- 02: CAPABILITIES MARQUEE -->
+<section class="overflow-hidden py-3 bg-surface-container-lowest rounded-xl border border-outline-variant/30">
+<div class="animate-marquee whitespace-nowrap flex items-center gap-4 text-tertiary font-label-md text-label-md tracking-widest font-bold select-none">
+<span>VIDEO PRODUCTION</span>
+<span class="text-primary-fixed">✦</span>
+<span>CREATIVE DESIGN</span>
+<span class="text-primary-fixed">✦</span>
+<span>PERFORMANCE MARKETING</span>
+<span class="text-primary-fixed">✦</span>
+<span>WEB DEVELOPMENT</span>
+<span class="text-primary-fixed">✦</span>
+<span>AI AUTOMATION</span>
+<span class="text-primary-fixed">✦</span>
+<span>3D MOTION</span>
+<span class="text-primary-fixed">✦</span>
+<!-- Duplicated for seamless loop -->
+<span>VIDEO PRODUCTION</span>
+<span class="text-primary-fixed">✦</span>
+<span>CREATIVE DESIGN</span>
+<span class="text-primary-fixed">✦</span>
+<span>PERFORMANCE MARKETING</span>
+<span class="text-primary-fixed">✦</span>
+<span>WEB DEVELOPMENT</span>
+<span class="text-primary-fixed">✦</span>
+<span>AI AUTOMATION</span>
+<span class="text-primary-fixed">✦</span>
+<span>3D MOTION</span>
+<span class="text-primary-fixed">✦</span>
+</div>
+</section>
+<!-- 03: SERVICES BENTO GRID -->
+<section class="flex flex-col gap-6" id="services">
+<div class="flex flex-col gap-2">
+<div class="inline-flex items-center gap-2 self-start px-2.5 py-1 rounded-full bg-surface-container-high border border-outline-variant/40">
+<span class="font-label-sm text-label-sm text-primary-fixed tracking-wider">SERVICES // 02</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-tertiary">
+          CREATIVITY MEETS CAPABILITY.
+        </h2>
+<p class="font-body-md text-body-md text-secondary">
+          Everything your brand needs to capture attention, build trust, and scale across channels.
+        </p>
+</div>
+<!-- Bento Cards Grid -->
+<div class="flex flex-col gap-4">
+<!-- Bento 1: Video & Content -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-5 flex flex-col gap-4 relative group hover:border-primary-fixed/40 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-fixed font-bold tracking-widest uppercase">01 / PRODUCTION</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-[10px] font-label-sm text-secondary">00:45:12</span>
+</div>
+<!-- Video Playhead Mockup -->
+<div class="relative h-32 rounded-lg bg-surface-container-lowest overflow-hidden border border-outline-variant/30 flex items-center justify-center">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="A dark cinematic sci-fi production studio view showing high-end RED cinema camera on a mechanical tracking arm with high-contrast moody lighting and electric neon lime monitors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs31w38HZqYILafBcbv6UHMsHpOnjUmd6l9-iP6dYG0r727weHR_PFWf9RE4vwBGOgqsSh7t6uJ2M_J_FstHLBJGx6MRfV3ht9lrTbOKRU2xGhthEDk6Oi2lhvb054Yt7qXu7YHqhHe-nrSfW95YgCyBHaY_lYo80lLqrGaDYmYaGzHwBJUP2MihiDdho-l8YtBrxIYuBaX-wN3QJqhUCOLOqtSMz994IDZs8H4flplOuUpnW9GjtU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<div class="w-10 h-10 rounded-full bg-primary-fixed/90 text-on-primary-fixed flex items-center justify-center shadow-[0_0_16px_rgba(188,245,67,0.4)] z-10">
+<span class="material-symbols-outlined text-lg" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+</div>
+<!-- Timeline scrub -->
+<div class="absolute bottom-2 inset-x-3 h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full w-2/3 bg-primary-fixed"></div>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-tertiary">Video &amp; Content Creation</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Cinematic commercial spots, viral short-form micro-narratives, and hyper-retentive brand storytelling.</p>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<div class="flex gap-1.5 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary text-[10px] font-label-sm">4K Direction</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary text-[10px] font-label-sm">Color Grading</span>
+</div>
+<a class="text-primary-fixed flex items-center gap-1 font-label-md text-label-md group-hover:translate-x-1 transition-transform" href="#inquiry">
+              Explore <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Bento 2: AI Agents & Automation -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-5 flex flex-col gap-4 relative group hover:border-primary-fixed/40 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-fixed font-bold tracking-widest uppercase">02 / AUTOMATION</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-high border border-primary-fixed/30 text-primary-fixed font-label-sm text-[10px]">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed animate-ping"></span>
+              AUTONOMOUS ACTIVE
+            </div>
+</div>
+<!-- Neural node visual mockup -->
+<div class="h-28 rounded-lg bg-surface-container-lowest p-3 border border-outline-variant/30 flex items-center justify-between relative overflow-hidden">
+<div class="flex flex-col gap-1 z-10">
+<div class="w-7 h-7 rounded bg-surface-container-high border border-outline-variant/60 flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined text-sm" data-icon="psychology">psychology</span>
+</div>
+<span class="font-label-sm text-[9px] text-secondary">INGEST</span>
+</div>
+<div class="h-0.5 flex-1 bg-gradient-to-r from-primary-fixed/40 via-primary-fixed to-outline-variant/40 mx-2 relative">
+<div class="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary-fixed shadow-[0_0_8px_#bcf543]"></div>
+</div>
+<div class="flex flex-col gap-1 z-10 items-end">
+<div class="w-7 h-7 rounded bg-surface-container-high border border-primary-fixed/40 flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined text-sm" data-icon="smart_toy">smart_toy</span>
+</div>
+<span class="font-label-sm text-[9px] text-primary-fixed">CONVERT</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-tertiary">AI Agents &amp; Workflows</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Autonomous multi-agent ecosystems for sales triage, custom knowledge LLMs, and real-time operations.</p>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<div class="flex gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary text-[10px] font-label-sm">Workflow AI</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary text-[10px] font-label-sm">Custom LLMs</span>
+</div>
+<a class="text-primary-fixed flex items-center gap-1 font-label-md text-label-md group-hover:translate-x-1 transition-transform" href="#inquiry">
+              Explore <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Bento 3: Web, App & SaaS -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-5 flex flex-col gap-4 relative group hover:border-primary-fixed/40 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-fixed font-bold tracking-widest uppercase">03 / ENGINEERING</span>
+<span class="font-label-sm text-[10px] text-secondary">LATENCY: 18ms</span>
+</div>
+<!-- Dimensional Code Snippet UI -->
+<div class="h-28 rounded-lg bg-surface-container-lowest p-3 border border-outline-variant/30 font-mono text-[11px] text-secondary/80 flex flex-col justify-between overflow-hidden">
+<div class="flex items-center gap-1.5 pb-1 border-b border-outline-variant/20">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+<span class="text-[9px] text-secondary font-label-sm ml-2">AppEngine.tsx</span>
+</div>
+<code><span class="text-primary-fixed">const</span> engine = <span class="text-secondary-fixed">new</span> SpatialRuntime({ <br/>  reactive: <span class="text-primary-fixed">true</span>,<br/>  meshOptimization: <span class="text-primary-fixed-dim">"ultra"</span> <br/>});</code>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-tertiary">Web &amp; SaaS Development</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-1">High-speed Next.js platforms, Three.js interactive visualizers, and resilient cloud architectures.</p>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<div class="flex gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary text-[10px] font-label-sm">Next.js</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary text-[10px] font-label-sm">Three.js</span>
+</div>
+<a class="text-primary-fixed flex items-center gap-1 font-label-md text-label-md group-hover:translate-x-1 transition-transform" href="#inquiry">
+              Explore <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Bento 4: 3D Animation & Motion -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-5 flex flex-col gap-4 relative group hover:border-primary-fixed/40 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-fixed font-bold tracking-widest uppercase">04 / SPATIAL 3D</span>
+<span class="bg-primary-fixed/10 border border-primary-fixed/30 text-primary-fixed px-2 py-0.5 rounded text-[10px] font-label-sm">UNREAL 5.4</span>
+</div>
+<!-- Chrome Torus visual -->
+<div class="relative h-28 rounded-lg bg-surface-container-lowest overflow-hidden border border-outline-variant/30 flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A highly detailed 3D liquid chrome geometric sculpture floating in a dark minimalist chamber with vibrant neon acid-lime caustic ray reflections bouncing off metallic surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxqPTmIVI0UhzCy7uPLEis956ljRm-qHw_UnAuBBANcqlhutKqLj0BKdds-m-pjwrWXysMvvuI_56P77KkDr2FwVCsA3fNF1oqRovFgjTUFYLu8mOsHPjP8vu4D5zmhPAjGIYdkXNpOhW9K34k7Ki6XEs8jexEvhLcRCO2xT8GKsopYm97K8MrIK-qnoAOj8jdt3ilp-FB5h-3NmIM5M9xKm8U43pvsykq-XL90VZtd9lhIRmoBqR8"/>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-tertiary">3D Animation &amp; Motion Design</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Hyper-realistic product renders, procedural simulations, and cinematic promotional world-building.</p>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<div class="flex gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary text-[10px] font-label-sm">CGI</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary text-[10px] font-label-sm">Houdini FX</span>
+</div>
+<a class="text-primary-fixed flex items-center gap-1 font-label-md text-label-md group-hover:translate-x-1 transition-transform" href="#inquiry">
+              Explore <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Bento 5: Performance Marketing -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-5 flex flex-col gap-4 relative group hover:border-primary-fixed/40 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-fixed font-bold tracking-widest uppercase">05 / GROWTH</span>
+<span class="font-label-sm text-[11px] text-primary-fixed font-bold">+380% ROAS</span>
+</div>
+<div class="h-24 rounded-lg bg-surface-container-lowest p-3 border border-outline-variant/30 flex items-end justify-between gap-2">
+<div class="w-full bg-surface-container h-8 rounded-t"></div>
+<div class="w-full bg-surface-container h-12 rounded-t"></div>
+<div class="w-full bg-surface-container h-10 rounded-t"></div>
+<div class="w-full bg-surface-container h-16 rounded-t"></div>
+<div class="w-full bg-primary-fixed/60 h-20 rounded-t shadow-[0_0_12px_rgba(188,245,67,0.3)]"></div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-tertiary">Performance Marketing</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-1">High-velocity ad creative testing, attribution modeling, and automated programmatic acquisition.</p>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<div class="flex gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary text-[10px] font-label-sm">Paid Social</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary text-[10px] font-label-sm">Attribution</span>
+</div>
+<a class="text-primary-fixed flex items-center gap-1 font-label-md text-label-md group-hover:translate-x-1 transition-transform" href="#inquiry">
+              Explore <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Bento 6: Graphic Design & Branding Identity -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-5 flex flex-col gap-4 relative group hover:border-primary-fixed/40 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-fixed font-bold tracking-widest uppercase">06 / IDENTITY</span>
+<span class="font-label-sm text-[10px] text-secondary">BRAND ARCHITECTURE</span>
+</div>
+<div class="h-24 rounded-lg bg-surface-container-lowest p-3 border border-outline-variant/30 flex items-center justify-between">
+<span class="font-display-xl-mobile text-3xl font-bold text-tertiary tracking-tighter">Aa</span>
+<div class="flex gap-1.5">
+<div class="w-6 h-6 rounded-full bg-primary-fixed"></div>
+<div class="w-6 h-6 rounded-full bg-surface-variant"></div>
+<div class="w-6 h-6 rounded-full bg-tertiary"></div>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-tertiary">Graphic &amp; Brand Identity</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Sculptural design systems, custom type design, and comprehensive guidelines for iconic modern brands.</p>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<div class="flex gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary text-[10px] font-label-sm">Design Systems</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary text-[10px] font-label-sm">Visual Tone</span>
+</div>
+<a class="text-primary-fixed flex items-center gap-1 font-label-md text-label-md group-hover:translate-x-1 transition-transform" href="#inquiry">
+              Explore <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- 04: SELECTED WORK (CINEMATIC PORTFOLIO) -->
+<section class="flex flex-col gap-6" id="work">
+<div class="flex flex-col gap-2">
+<div class="inline-flex items-center gap-2 self-start px-2.5 py-1 rounded-full bg-surface-container-high border border-outline-variant/40">
+<span class="font-label-sm text-label-sm text-primary-fixed tracking-wider">PORTFOLIO // 03</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-tertiary">
+          MADE TO MAKE AN IMPACT.
+        </h2>
+<p class="font-body-md text-body-md text-secondary">
+          Curated client case studies across physical and digital dimensions.
+        </p>
+</div>
+<!-- Portfolio Filter Pills -->
+<div class="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+<button class="portfolio-filter-btn px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold whitespace-nowrap active:scale-95 transition-all" data-category="all">
+          All
+        </button>
+<button class="portfolio-filter-btn px-4 py-1.5 rounded-full bg-surface-container-low text-secondary border border-outline-variant/30 font-label-sm text-label-sm font-medium whitespace-nowrap hover:text-tertiary active:scale-95 transition-all" data-category="3d">
+          3D Motion
+        </button>
+<button class="portfolio-filter-btn px-4 py-1.5 rounded-full bg-surface-container-low text-secondary border border-outline-variant/30 font-label-sm text-label-sm font-medium whitespace-nowrap hover:text-tertiary active:scale-95 transition-all" data-category="ai">
+          AI &amp; Tech
+        </button>
+<button class="portfolio-filter-btn px-4 py-1.5 rounded-full bg-surface-container-low text-secondary border border-outline-variant/30 font-label-sm text-label-sm font-medium whitespace-nowrap hover:text-tertiary active:scale-95 transition-all" data-category="campaigns">
+          Campaigns
+        </button>
+<button class="portfolio-filter-btn px-4 py-1.5 rounded-full bg-surface-container-low text-secondary border border-outline-variant/30 font-label-sm text-label-sm font-medium whitespace-nowrap hover:text-tertiary active:scale-95 transition-all" data-category="branding">
+          Branding
+        </button>
+</div>
+<!-- Case Study Cards -->
+<div class="flex flex-col gap-6">
+<!-- Project 1 -->
+<article class="project-card flex flex-col rounded-2xl overflow-hidden bg-surface-container-low border border-outline-variant/40 group hover:border-primary-fixed/50 transition-all shadow-xl" data-type="3d">
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-lowest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Futuristic midnight black electric hypercar with sleek aerodynamic curves illuminated by electric lime neon strip lights in a high-tech dark carbon fiber showroom." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj1Uw6gRVbwz3Au0ZBRxJQSn-Ujl0djIpLj6aEeqjSuJZPVB63byRH0kAswSC7q-e0KQutQ0okqqbg2TV-MetnV-7yulUbmOmlP_zzd6cmkpEkwVazA-DUmCPH-YbVsJ1zwscwWnWdI98X1FeATxWAUrkByHqh7UbZ7VS1WJW3AzFmp0iPakDna8XmcdgLzX2W96EITXxzsEWuHoMpFSb-y6bJfiaU0h-vchbHXGpxj5m48sm_aeXU"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded bg-surface-container-lowest/80 backdrop-blur-md border border-outline-variant/40 font-label-sm text-[10px] text-tertiary uppercase">3D Motion &amp; Web</span>
+<span class="px-2.5 py-1 rounded bg-primary-fixed/90 text-on-primary-fixed font-label-sm text-[10px] font-bold">+4.2M Views</span>
+</div>
+<div class="absolute bottom-3 right-3">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/80 backdrop-blur-md text-[9px] font-label-sm text-primary-fixed border border-primary-fixed/30">CONCEPT SHOWCASE</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div>
+<span class="font-label-sm text-label-sm text-primary-fixed tracking-wider">AUTOMOTIVE // 2024</span>
+<h3 class="font-headline-sm text-headline-sm text-tertiary mt-0.5">KINETIC VELOCITY</h3>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+              Real-time WebGL hypercar configurator and global cinematic launch film resulting in 4.2M views and unprecedented pre-orders.
+            </p>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<div class="flex gap-1.5">
+<span class="text-[11px] font-label-sm text-secondary">Three.js</span>
+<span class="text-secondary/40">•</span>
+<span class="text-[11px] font-label-sm text-secondary">Unreal Engine</span>
+</div>
+<span class="material-symbols-outlined text-primary-fixed group-hover:translate-x-1 transition-transform" data-icon="north_east">north_east</span>
+</div>
+</div>
+</article>
+<!-- Project 2 -->
+<article class="project-card flex flex-col rounded-2xl overflow-hidden bg-surface-container-low border border-outline-variant/40 group hover:border-primary-fixed/50 transition-all shadow-xl" data-type="ai">
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-lowest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Futuristic cybernetic interface visualizing complex data graphs and artificial intelligence nodes on transparent glass screens in an obsidian minimalist command center with acid lime accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1kWwmnK1RNr73irWd8ccWydiXgnOYLEBI96qZRp4jnqxNPTNnJfy_LkS2tAI1Pa_MJ-aVrHHQAsjLtrmcyP69hT_rBlfC3DKYGPdJPB-monz3gAHcK8czatPVC4ikO2MPDED6YIntxD68PxOBDMKgRnwuPFRDK8Uw_fHAwtV6IOquRfWf-Cn9l4L2j3EwVl4RmdaQOfxKRdzg1sk1pzTX9jp0J8eWYNowinWeUNlVKI5bTEn79s--"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded bg-surface-container-lowest/80 backdrop-blur-md border border-outline-variant/40 font-label-sm text-[10px] text-tertiary uppercase">AI &amp; SaaS</span>
+<span class="px-2.5 py-1 rounded bg-primary-fixed/90 text-on-primary-fixed font-label-sm text-[10px] font-bold">Series B Platform</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div>
+<span class="font-label-sm text-label-sm text-primary-fixed tracking-wider">ENTERPRISE TECH // 2024</span>
+<h3 class="font-headline-sm text-headline-sm text-tertiary mt-0.5">AURA SYNTHETICS</h3>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+              End-to-end design &amp; design system architecture for an autonomous enterprise AI knowledge engine serving Fortune 500 teams.
+            </p>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<div class="flex gap-1.5">
+<span class="text-[11px] font-label-sm text-secondary">Product Design</span>
+<span class="text-secondary/40">•</span>
+<span class="text-[11px] font-label-sm text-secondary">Custom LLM</span>
+</div>
+<span class="material-symbols-outlined text-primary-fixed group-hover:translate-x-1 transition-transform" data-icon="north_east">north_east</span>
+</div>
+</div>
+</article>
+<!-- Project 3 -->
+<article class="project-card flex flex-col rounded-2xl overflow-hidden bg-surface-container-low border border-outline-variant/40 group hover:border-primary-fixed/50 transition-all shadow-xl" data-type="branding">
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-lowest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Monolithic frosted dark glass bottle of luxury botanical elixir with precision lime green typographical labels set against dark textured slate stone with subtle water caustics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_DqpIONsbK3-00kg-euDI6ZgFQ40mBnD0GD9omS_MfTDR_quSdCjM1oReUoqDVjGdZm94vS5Wp9EdZW-3HZlO3uKHA3HUAdk2JnPnrXwHetJ0Yto_9wqaFZgxbJFgZcK6R2QkIf_sFRgPKv6RhSfTYP1OjXfTi_am148H-CubVZLsg7ecvMPXmwSTsfqHySG847VbH6BsVGlWpzYYOzGmABQ-xthbOFkepE0K7vXNbZLWjkPD9Y1c"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded bg-surface-container-lowest/80 backdrop-blur-md border border-outline-variant/40 font-label-sm text-[10px] text-tertiary uppercase">Rebrand &amp; DTC</span>
+<span class="px-2.5 py-1 rounded bg-primary-fixed/90 text-on-primary-fixed font-label-sm text-[10px] font-bold">+240% Conv.</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div>
+<span class="font-label-sm text-label-sm text-primary-fixed tracking-wider">BEVERAGE // 2024</span>
+<h3 class="font-headline-sm text-headline-sm text-tertiary mt-0.5">NEO-NOIR BEVERAGES</h3>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+              Ultra-luxury botanical elixir brand identity, bespoke glass packaging renders, and high-conversion global DTC Shopify Plus storefront.
+            </p>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<div class="flex gap-1.5">
+<span class="text-[11px] font-label-sm text-secondary">Brand Identity</span>
+<span class="text-secondary/40">•</span>
+<span class="text-[11px] font-label-sm text-secondary">CGI Packaging</span>
+</div>
+<span class="material-symbols-outlined text-primary-fixed group-hover:translate-x-1 transition-transform" data-icon="north_east">north_east</span>
+</div>
+</div>
+</article>
+<!-- Project 4 -->
+<article class="project-card flex flex-col rounded-2xl overflow-hidden bg-surface-container-low border border-outline-variant/40 group hover:border-primary-fixed/50 transition-all shadow-xl" data-type="campaigns">
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-lowest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Avant-garde digital fashion runway with virtual models wearing structured architectural metallic garments bathed in volumetric emerald and lime spotlights in a cavernous brutalist hall." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmF4otlyQxHEDCrUwP8ZQ5CDVpZaJY1zHnVGJM9XkmlgkmkGT-_mRKS8Q2uFZGNqIDmolsZIV7zGxsffec7lT9u92xxbMb7tSATGJ0hWQSYLcFSkqPh-p6E-SkWbhT_te_k4hjW4NuRUIonde7dlqXVeusgO-jaQP4pJrhu-dxRMTU1hkH7tu7TLjG2UdaADya2yCAXXntfw00RN3ccz4pbhsn59Y94Oz6ArO3jcia23IZP56hZqrB"/>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded bg-surface-container-lowest/80 backdrop-blur-md border border-outline-variant/40 font-label-sm text-[10px] text-tertiary uppercase">Digital Fashion</span>
+<span class="px-2.5 py-1 rounded bg-primary-fixed/90 text-on-primary-fixed font-label-sm text-[10px] font-bold">Global Press</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div>
+<span class="font-label-sm text-label-sm text-primary-fixed tracking-wider">FASHION &amp; CULTURE // 2023</span>
+<h3 class="font-headline-sm text-headline-sm text-tertiary mt-0.5">METRO DYNAMICS</h3>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+              Spatial 3D runway presentation, procedural digital garments, and interactive virtual showroom experience for Milan Design Week.
+            </p>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<div class="flex gap-1.5">
+<span class="text-[11px] font-label-sm text-secondary">Spatial Computing</span>
+<span class="text-secondary/40">•</span>
+<span class="text-[11px] font-label-sm text-secondary">Cloth Sim</span>
+</div>
+<span class="material-symbols-outlined text-primary-fixed group-hover:translate-x-1 transition-transform" data-icon="north_east">north_east</span>
+</div>
+</div>
+</article>
+</div>
+<!-- View All Projects Button -->
+<button class="w-full py-3.5 rounded-xl border border-outline-variant/50 bg-surface-container text-tertiary font-label-md text-label-md font-semibold flex items-center justify-center gap-2 hover:bg-surface-container-high transition-colors active:scale-[0.98]">
+<span>View All 28 Projects</span>
+<span class="material-symbols-outlined text-sm" data-icon="east">east</span>
+</button>
+</section>
+<!-- 05: CREATIVE PROCESS (STEPPER) -->
+<section class="flex flex-col gap-6" id="process">
+<div class="flex flex-col gap-2">
+<div class="inline-flex items-center gap-2 self-start px-2.5 py-1 rounded-full bg-surface-container-high border border-outline-variant/40">
+<span class="font-label-sm text-label-sm text-primary-fixed tracking-wider">PROCESS // 04</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-tertiary">
+          FROM FIRST IMPRESSION TO LASTING IMPACT.
+        </h2>
+</div>
+<!-- Stepper List with Connected Glow Line -->
+<div class="relative flex flex-col gap-8 pl-8 before:absolute before:left-3 before:top-3 before:bottom-3 before:w-0.5 before:bg-gradient-to-b before:from-primary-fixed before:via-outline-variant/40 before:to-primary-fixed">
+<!-- Step 1 -->
+<div class="relative flex flex-col gap-1.5 group">
+<div class="absolute -left-8 top-0.5 w-6 h-6 rounded-full bg-surface-container-lowest border-2 border-primary-fixed flex items-center justify-center shadow-[0_0_10px_rgba(188,245,67,0.4)]">
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+</div>
+<span class="font-label-sm text-label-sm text-primary-fixed font-bold tracking-widest">PHASE 01</span>
+<h3 class="font-title-md text-title-md text-tertiary">Discover &amp; Deconstruct</h3>
+<p class="font-body-sm text-body-sm text-secondary">
+            Understand the brand DNA, audience behavior, competitor voids, and primary growth objectives through telemetry and deep interviews.
+          </p>
+</div>
+<!-- Step 2 -->
+<div class="relative flex flex-col gap-1.5 group">
+<div class="absolute -left-8 top-0.5 w-6 h-6 rounded-full bg-surface-container-lowest border-2 border-primary-fixed flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+</div>
+<span class="font-label-sm text-label-sm text-primary-fixed font-bold tracking-widest">PHASE 02</span>
+<h3 class="font-title-md text-title-md text-tertiary">Create &amp; Architect</h3>
+<p class="font-body-sm text-body-sm text-secondary">
+            Develop radical creative concepts, high-fidelity 3D visuals, cinematic treatments, and custom technical system architectures.
+          </p>
+</div>
+<!-- Step 3 -->
+<div class="relative flex flex-col gap-1.5 group">
+<div class="absolute -left-8 top-0.5 w-6 h-6 rounded-full bg-surface-container-lowest border-2 border-primary-fixed flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+</div>
+<span class="font-label-sm text-label-sm text-primary-fixed font-bold tracking-widest">PHASE 03</span>
+<h3 class="font-title-md text-title-md text-tertiary">Launch &amp; Syndicate</h3>
+<p class="font-body-sm text-body-sm text-secondary">
+            Deploy cinematic campaigns, scalable web platforms, and intelligent automation pipelines with zero operational friction.
+          </p>
+</div>
+<!-- Step 4 -->
+<div class="relative flex flex-col gap-1.5 group">
+<div class="absolute -left-8 top-0.5 w-6 h-6 rounded-full bg-surface-container-lowest border-2 border-primary-fixed flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+</div>
+<span class="font-label-sm text-label-sm text-primary-fixed font-bold tracking-widest">PHASE 04</span>
+<h3 class="font-title-md text-title-md text-tertiary">Optimize &amp; Compound</h3>
+<p class="font-body-sm text-body-sm text-secondary">
+            Deep telemetry analysis, conversion rate refinement, and AI self-learning loops to turn immediate traction into compound growth.
+          </p>
+</div>
+</div>
+</section>
+<!-- 06: TECHNOLOGY & AI FEATURE SPOTLIGHT -->
+<section class="p-6 rounded-2xl bg-surface-container-lowest border border-primary-fixed/30 shadow-[0_0_36px_-6px_rgba(188,245,67,0.2)] flex flex-col gap-5 relative overflow-hidden" id="ai-intelligence">
+<!-- Glow ambient top right -->
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-primary-fixed/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-fixed animate-ping"></span>
+<span class="font-label-sm text-label-sm text-primary-fixed tracking-wider font-bold">INTELLIGENCE LABS</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-tertiary">
+        BEYOND CONTENT. INTO INTELLIGENCE.
+      </h2>
+<p class="font-body-md text-body-md text-secondary">
+        We combine creative thinking with engineering to build intelligent systems that help businesses operate and scale autonomously.
+      </p>
+<!-- Interactive Capability Node Modules -->
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container border border-outline-variant/30">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined text-base" data-icon="smart_toy">smart_toy</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-tertiary">Custom Autonomous AI Agents</span>
+<span class="font-body-sm text-[11px] text-secondary">Lead triage, CRM dispatch &amp; proactive retention</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container border border-outline-variant/30">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined text-base" data-icon="chat">chat</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-tertiary">Workflow &amp; WhatsApp Automation</span>
+<span class="font-body-sm text-[11px] text-secondary">Zero-touch conversational commerce &amp; customer support</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container border border-outline-variant/30">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined text-base" data-icon="view_in_ar">view_in_ar</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-tertiary">High-Velocity Three.js Web</span>
+<span class="font-body-sm text-[11px] text-secondary">Sub-second 3D graphics in modern mobile browsers</span>
+</div>
+</div>
+</div>
+<a class="mt-2 w-full py-3 rounded-xl bg-surface-container-high border border-primary-fixed/40 text-primary-fixed font-label-md text-label-md font-bold flex items-center justify-center gap-2 hover:bg-primary-fixed hover:text-on-primary-fixed active:scale-95 transition-all" href="#inquiry">
+<span>Explore AI Solutions</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</section>
+<!-- 07: EDITORIAL CREED (BRAND STATEMENT) -->
+<section class="py-8 flex flex-col gap-4 text-center items-center border-y border-outline-variant/20" id="creed">
+<div class="px-3 py-1 rounded-full bg-surface-container-high font-label-sm text-[10px] text-secondary tracking-widest uppercase">
+        THE HOOKMEDIA CREED
+      </div>
+<blockquote class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-tertiary leading-tight">
+        GOOD DESIGN GETS ATTENTION. <br/>
+<span class="text-primary-fixed underline decoration-primary-fixed/40">GREAT EXECUTION BUILDS GROWTH.</span>
+</blockquote>
+<p class="font-body-sm text-body-sm text-secondary max-w-xs mt-2">
+        We bridge the divide between artistic elevation and brutal performance metrics.
+      </p>
+</section>
+<!-- 08: MULTI-STEP PROJECT INQUIRY FORM -->
+<section class="flex flex-col gap-6" id="inquiry">
+<div class="flex flex-col gap-2">
+<div class="inline-flex items-center gap-2 self-start px-2.5 py-1 rounded-full bg-surface-container-high border border-outline-variant/40">
+<span class="font-label-sm text-label-sm text-primary-fixed tracking-wider">INQUIRY // 05</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-tertiary">
+          LET'S MAKE SOMETHING THAT MATTERS.
+        </h2>
+<p class="font-body-md text-body-md text-secondary">
+          Tell us about your brand challenge. We review briefs and reply within 12 hours.
+        </p>
+</div>
+<!-- Form Container Card -->
+<form class="bg-surface-container-low border border-outline-variant/40 rounded-2xl p-6 flex flex-col gap-6 shadow-2xl" id="project-form">
+<!-- Step 1: Scope Chips -->
+<div class="flex flex-col gap-3">
+<label class="font-label-md text-label-md text-tertiary flex items-center justify-between">
+<span>01. SELECT SCOPE</span>
+<span class="text-secondary font-label-sm text-[10px]">MULTIPLE OK</span>
+</label>
+<div class="grid grid-cols-2 gap-2" id="scope-selection">
+<button class="scope-chip py-2.5 px-3 rounded-lg bg-surface-container border border-outline-variant/40 text-secondary text-xs font-label-md text-center active:scale-95 transition-all" data-value="3d-video" type="button">
+              3D &amp; Video
+            </button>
+<button class="scope-chip py-2.5 px-3 rounded-lg bg-surface-container border border-outline-variant/40 text-secondary text-xs font-label-md text-center active:scale-95 transition-all" data-value="ai-auto" type="button">
+              AI Automation
+            </button>
+<button class="scope-chip py-2.5 px-3 rounded-lg bg-surface-container border border-outline-variant/40 text-secondary text-xs font-label-md text-center active:scale-95 transition-all" data-value="web-app" type="button">
+              Web/App Dev
+            </button>
+<button class="scope-chip py-2.5 px-3 rounded-lg bg-surface-container border border-outline-variant/40 text-secondary text-xs font-label-md text-center active:scale-95 transition-all" data-value="rebrand" type="button">
+              Full Rebrand
+            </button>
+</div>
+</div>
+<!-- Step 2: Budget Selectors -->
+<div class="flex flex-col gap-3">
+<label class="font-label-md text-label-md text-tertiary">02. ESTIMATED BUDGET (USD)</label>
+<div class="grid grid-cols-2 gap-2" id="budget-selection">
+<button class="budget-chip py-2.5 px-3 rounded-lg bg-surface-container border border-outline-variant/40 text-secondary text-xs font-label-md text-center active:scale-95 transition-all" data-value="10k-25k" type="button">
+              $10k — $25k
+            </button>
+<button class="budget-chip py-2.5 px-3 rounded-lg bg-surface-container border border-outline-variant/40 text-secondary text-xs font-label-md text-center active:scale-95 transition-all" data-value="25k-50k" type="button">
+              $25k — $50k
+            </button>
+<button class="budget-chip py-2.5 px-3 rounded-lg bg-surface-container border border-outline-variant/40 text-secondary text-xs font-label-md text-center active:scale-95 transition-all" data-value="50k-100k" type="button">
+              $50k — $100k
+            </button>
+<button class="budget-chip py-2.5 px-3 rounded-lg bg-surface-container border border-outline-variant/40 text-secondary text-xs font-label-md text-center active:scale-95 transition-all" data-value="100k+" type="button">
+              $100k+
+            </button>
+</div>
+</div>
+<!-- Step 3: Fast Contact Details -->
+<div class="flex flex-col gap-3">
+<label class="font-label-md text-label-md text-tertiary">03. CONTACT &amp; VISION</label>
+<div class="flex flex-col gap-2.5">
+<input class="h-12 px-4 rounded-lg bg-surface-container-lowest border border-outline-variant/50 text-tertiary placeholder:text-secondary/60 font-body-sm text-body-sm focus:border-primary-fixed focus:ring-0 transition-colors" placeholder="Your Name" required="" type="text"/>
+<input class="h-12 px-4 rounded-lg bg-surface-container-lowest border border-outline-variant/50 text-tertiary placeholder:text-secondary/60 font-body-sm text-body-sm focus:border-primary-fixed focus:ring-0 transition-colors" placeholder="Work Email" required="" type="email"/>
+<input class="h-12 px-4 rounded-lg bg-surface-container-lowest border border-outline-variant/50 text-tertiary placeholder:text-secondary/60 font-body-sm text-body-sm focus:border-primary-fixed focus:ring-0 transition-colors" placeholder="Company Name or URL" type="text"/>
+<textarea class="p-4 rounded-lg bg-surface-container-lowest border border-outline-variant/50 text-tertiary placeholder:text-secondary/60 font-body-sm text-body-sm focus:border-primary-fixed focus:ring-0 transition-colors resize-none" placeholder="Brief summary of your project goals..." rows="3"></textarea>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="flex flex-col gap-2 pt-2">
+<button class="w-full py-4 rounded-xl bg-primary-fixed text-on-primary-fixed font-headline-sm text-sm font-bold flex items-center justify-center gap-2 shadow-[0_0_24px_rgba(188,245,67,0.35)] active:scale-[0.98] transition-transform" type="submit">
+<span>Submit Project Brief</span>
+<span class="material-symbols-outlined text-base" data-icon="send">send</span>
+</button>
+<p class="text-center font-body-sm text-[11px] text-secondary/60">
+            Strict NDA protected. Direct founder review.
+          </p>
+</div>
+</form>
+</section>
+</main>
+<!-- SHARED COMPONENT: Footer -->
+<footer class="w-full mt-20 border-t border-outline-variant/30 bg-surface-container-lowest">
+<div class="max-w-md mx-auto px-6 py-12 flex flex-col gap-8">
+<!-- Studio Brand Anchor -->
+<div class="flex flex-col gap-2">
+<span class="text-headline-sm font-headline-sm font-bold text-tertiary">THE HOOKMEDIA</span>
+<p class="font-body-sm text-body-sm text-secondary">
+          Hook Attention. Build What's Next.
+        </p>
+</div>
+<!-- Studio Global Status Nodes -->
+<div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-fixed animate-pulse"></span>
+<span class="font-label-sm text-[10px] text-tertiary tracking-wider uppercase">NEW YORK — TOKYO — LONDON</span>
+</div>
+<span class="font-label-sm text-[10px] text-secondary font-mono" id="utc-clock">14:22 UTC</span>
+</div>
+<!-- Footer Quick Links -->
+<div class="grid grid-cols-2 gap-4 pt-2">
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-primary-fixed font-bold">STUDIO</span>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary-fixed transition-colors" href="#work">Showcase</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary-fixed transition-colors" href="#ai-intelligence">AI Solutions</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary-fixed transition-colors" href="#services">Creative Studio</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-primary-fixed font-bold">GOVERNANCE</span>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary-fixed transition-colors" href="#inquiry">Inquiry</a>
+</div>
+</div>
+<!-- Copyright Notice verbatim from Shared Component JSON -->
+<div class="pt-6 border-t border-outline-variant/20 flex flex-col gap-1">
+<p class="font-body-sm text-body-sm text-secondary/70">
+          © 2025 The HookMedia Studio. All rights reserved. Engineering Impossible Brands.
+        </p>
+</div>
+</div>
+</footer>
+<!-- Micro-interactions & Logic -->
+<script>
+    // Navigation Drawer Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const drawerClose = document.getElementById('drawer-close');
+    const navDrawer = document.getElementById('nav-drawer');
+    const drawerBackdrop = document.getElementById('drawer-backdrop');
+
+    function openDrawer() {
+      drawerBackdrop.classList.remove('hidden');
+      setTimeout(() => drawerBackdrop.classList.remove('opacity-0'), 10);
+      navDrawer.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawerBackdrop.classList.add('opacity-0');
+      navDrawer.classList.add('translate-x-full');
+      setTimeout(() => {
+        drawerBackdrop.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 300);
+    }
+
+    menuToggle?.addEventListener('click', openDrawer);
+    drawerClose?.addEventListener('click', closeDrawer);
+    drawerBackdrop?.addEventListener('click', closeDrawer);
+    navDrawer?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeDrawer));
+
+    // Portfolio Filter Tab Logic
+    const filterButtons = document.querySelectorAll('.portfolio-filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Reset button states
+        filterButtons.forEach(b => {
+          b.className = 'portfolio-filter-btn px-4 py-1.5 rounded-full bg-surface-container-low text-secondary border border-outline-variant/30 font-label-sm text-label-sm font-medium whitespace-nowrap hover:text-tertiary active:scale-95 transition-all';
+        });
+        // Activate clicked
+        btn.className = 'portfolio-filter-btn px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold whitespace-nowrap active:scale-95 transition-all';
+
+        const category = btn.getAttribute('data-category');
+        projectCards.forEach(card => {
+          if (category === 'all' || card.getAttribute('data-type') === category) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Inquiry Form Interactive Chips
+    document.querySelectorAll('#scope-selection .scope-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        chip.classList.toggle('bg-primary-fixed');
+        chip.classList.toggle('text-on-primary-fixed');
+        chip.classList.toggle('border-primary-fixed');
+        chip.classList.toggle('font-bold');
+      });
+    });
+
+    document.querySelectorAll('#budget-selection .budget-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('#budget-selection .budget-chip').forEach(c => {
+          c.classList.remove('bg-primary-fixed', 'text-on-primary-fixed', 'border-primary-fixed', 'font-bold');
+        });
+        chip.classList.add('bg-primary-fixed', 'text-on-primary-fixed', 'border-primary-fixed', 'font-bold');
+      });
+    });
+
+    // Live UTC Clock updater
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getUTCHours()).padStart(2, '0');
+      const mins = String(now.getUTCMinutes()).padStart(2, '0');
+      const clockEl = document.getElementById('utc-clock');
+      if (clockEl) clockEl.textContent = `${hours}:${mins} UTC`;
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+  </script>
+</body></html>

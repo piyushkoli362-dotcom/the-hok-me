@@ -1,0 +1,3 @@
+/* The HookMedia design system: shared across the homepage and all supporting pages. */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+:root{--color-bg:#0b0d0f;--color-surface:#15181b;--color-surface-low:#101214;--color-surface-card:#15181b;--color-surface-high:#202428;--color-text:#fff;--color-muted:#a5abb2;--color-accent:#c6ff4d;--color-border:#30353a;--font-body:'Plus Jakarta Sans',Arial,sans-serif;--font-display:'Space Grotesk',Arial,sans-serif;--motion-fast:150ms;--motion-base:260ms;--radius-card:12px;color-scheme:dark}

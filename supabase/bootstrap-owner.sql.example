@@ -1,0 +1,19 @@
+-- Run only after creating and confirming the intended owner in Supabase Auth.
+-- This script grants access only; it does not create the Supabase Auth user or set a password.
+do $$
+declare
+  owner_email text := 'bagulyapiyush@gmail.com';
+  owner_id uuid;
+begin
+  select id into owner_id
+    from auth.users
+    where lower(email) = lower(owner_email)
+      and email_confirmed_at is not null;
+  if owner_id is null then
+    raise exception 'No confirmed Auth account matched the configured owner address.';
+  end if;
+  insert into public.user_roles(user_id, role, granted_by, revoked_at)
+    values (owner_id, 'owner', null, null)
+    on conflict (user_id, role) do update set revoked_at = null, granted_at = now();
+end;
+$$;
