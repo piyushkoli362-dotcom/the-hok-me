@@ -6,6 +6,7 @@ const status = require('../api/status.js');
 const ownerLogin = require('../lib/server/owner-api/login.js');
 const ownerLeads = require('../lib/server/owner-api/lead-list.js');
 const ownerExport = require('../lib/server/owner-api/lead-export.js');
+const ownerMfa = require('../lib/server/owner-api/mfa.js');
 const cronSheets = require('../api/cron/sheets-sync.js');
 function response() { return { headers: {}, code: 200, body: null, setHeader(name, value) { this.headers[name] = value; }, status(code) { this.code = code; return this; }, json(body) { this.body = body; return this; } }; }
 function withHeaders() { return { headers: {}, setHeader(name, value) { this.headers[name] = value; }, status(code) { this.code = code; return this; }, json(body) { this.body = body; return this; }, send(body) { this.body = body; return this; } }; }
@@ -24,6 +25,11 @@ const request = (body, origin = 'https://thehookmedia.example') => ({ method: 'P
   if (!validate({ ...validInquiry, phone: 'not a number' }).error) throw new Error('Malformed optional phone must be rejected');
   if (!validate({ ...validInquiry, companyWebsite: 'spam.example' }).error) throw new Error('Filled honeypot must be rejected');
   if (!validate({ ...validInquiry, contactPreference: 'Telegram' }).error) throw new Error('Unknown contact preference must be rejected');
+  const verifiedFactor = { id: 'verified-factor', factor_type: 'totp', status: 'verified' };
+  const pendingFactor = { id: 'pending-factor', factor_type: 'totp', status: 'unverified' };
+  if (ownerMfa.selectAvailableTotpFactor([verifiedFactor], verifiedFactor.id) !== verifiedFactor) throw new Error('An existing verified authenticator must be accepted for MFA verification');
+  if (ownerMfa.selectAvailableTotpFactor([pendingFactor], pendingFactor.id) !== pendingFactor) throw new Error('A pending authenticator must be accepted for MFA verification');
+  if (ownerMfa.selectAvailableTotpFactor([{ ...verifiedFactor, factor_type: 'webauthn' }], verifiedFactor.id)) throw new Error('Non-TOTP factors must not be used for authenticator verification');
   delete process.env.GOOGLE_SHEETS_WEB_APP_URL; delete process.env.GOOGLE_SHEETS_SECRET;
   const unavailable = response(); status({ method: 'GET' }, unavailable);
   if (unavailable.body.ready !== false) throw new Error('Unconfigured production storage must remain unavailable');
