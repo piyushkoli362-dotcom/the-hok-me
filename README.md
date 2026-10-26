@@ -31,3 +31,6 @@ Sheets is a secondary, idempotent mirror. A lead is saved in PostgreSQL with an 
 ## Content and brand
 
 Design tokens for backgrounds, surfaces, typography, lime accent, borders, radii and motion are centralized in `brand-tokens.css`. Portfolio tiles are labelled concept studies rather than client work. No unverified clients, testimonials, awards or results are asserted. Privacy copy, actual business entity and retention contact still require owner/legal review before a public launch.
+# SEO deployment URL
+
+`SITE_URL` is the canonical HTTPS origin used by the production build, service-page metadata, and XML sitemap. It defaults to `https://the-hok-me.vercel.app`; set it to the verified production origin when deploying under a different domain. Do not set it to localhost, a preview URL, or a path. The Google Search Console verification file `google0a9687274ca52e4f.html` is copied into every build and must remain in the repository.

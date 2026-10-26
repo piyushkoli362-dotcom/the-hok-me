@@ -1,0 +1,24 @@
+# The HookMedia keyword-to-page map
+
+Intent mapping for the services the supplied business brief says the agency offers. Candidate phrases are hypotheses for page relevance, not measured demand. Search volumes, ranking difficulty and CPC are intentionally omitted because no verified keyword-data source or Search Console property was available.
+
+| Primary candidate | Supporting themes | Intent | Target URL | Proposed title | Description direction | Content and internal links |
+| --- | --- | --- | --- | --- | --- | --- |
+| video editing agency | professional video editing services, short-form video editing | Hire an editor/studio | `/services/video-editing` | Video Editing Services \| The HookMedia | Explain formats, editing scope and review handoff. | Link from Video & Content card; related content marketing and 3D. |
+| social media management services | social media marketing agency, social content planning | Ongoing channel management | `/services/social-media-management` | Social Media Management \| The HookMedia | Describe channel planning, approvals and reporting. | Link from homepage directory; related content marketing and Meta Ads. |
+| content marketing agency | content strategy, content production services | Plan and produce content | `/services/content-marketing` | Content Marketing \| The HookMedia | Explain editorial planning and multi-format reuse. | Link from video and social pages. |
+| product photography services | product photoshoot, brand photography | Commission a shoot | `/services/photoshoot` | Photoshoot & Product Photography \| The HookMedia | Clarify planning, usage and deliverables. | Link from homepage directory; related graphic design and video. |
+| graphic design agency | brand identity design, visual identity services | Hire a designer/studio | `/services/graphic-design` | Graphic Design & Brand Identity \| The HookMedia | Explain identity systems, asset formats and licensing. | Link from homepage brand card; related campaign and photography work. |
+| Meta Ads agency | Meta Ads management services, Facebook and Instagram ads | Hire paid-social support | `/services/meta-ads` | Meta Ads Management \| The HookMedia | Explain account ownership, creative tests and measurement. | Link from social media and performance pages. |
+| Google Ads management services | Google Ads agency, paid search management | Hire paid-search support | `/services/google-ads` | Google Ads Management \| The HookMedia | Explain query intent, landing pages and tracking. | Link from SEO and Meta Ads pages. |
+| SEO services | technical SEO, on-page SEO | Improve organic search foundations | `/services/seo` | Search Engine Optimization \| The HookMedia | Set honest expectations; describe crawl, content and measurement. | Link from homepage performance card and web development page. |
+| website development company | responsive website development, website design and development | Commission a website | `/services/website-development` | Website Development \| The HookMedia | Explain accessibility, forms, performance and handoff. | Link from engineering card; related SEO and SaaS. |
+| app development services | mobile app development, application development | Commission an app | `/services/app-development` | App Development \| The HookMedia | Explain discovery, platform decisions and release planning. | Link from engineering card and SaaS. |
+| SaaS development company | SaaS product development, SaaS MVP development | Build a software product | `/services/saas-development` | SaaS Development \| The HookMedia | Explain roles, release scope, security and operations. | Link from app and website pages. |
+| AI agent development services | AI agent development, custom AI assistants | Assess/build a bounded agent | `/services/ai-agents` | AI Agent Development \| The HookMedia | Explain task boundaries, access control and human review. | Link from AI section; related automation and SaaS. |
+| business process automation | workflow automation, business automation services | Automate a workflow | `/services/business-automation` | Business Process Automation \| The HookMedia | Explain triggers, exceptions, retries and ownership. | Link from AI agents and integrations. |
+| 3D animation studio | 3D animation services, motion graphics | Commission animation | `/services/3d-animation` | 3D Animation & Motion Graphics \| The HookMedia | Explain storyboards, assets, aspect ratios and approvals. | Link from motion card; related video editing and product photography. |
+
+## Measurement plan
+
+Use Google Search Console query/page reports after the property is verified and data accumulates. Compare the chosen page with actual queries and landing-page engagement before changing targeting. Do not add location modifiers until service coverage and target geography are confirmed.

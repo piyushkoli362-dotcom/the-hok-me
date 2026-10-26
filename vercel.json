@@ -1,1 +1,1 @@
-{"buildCommand":"npm run build","outputDirectory":"dist","framework":null,"crons":[{"path":"/api/cron/sheets-sync","schedule":"0 2 * * *"}]}
+{"buildCommand":"npm run build","outputDirectory":"dist","framework":null,"trailingSlash":false,"crons":[{"path":"/api/cron/sheets-sync","schedule":"0 2 * * *"}]}

@@ -1,9 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { buildServicePages, services } from './service-pages.mjs';
 
 const root = process.cwd();
 const out = path.join(root, 'dist');
-const publicFiles = ['index.html', 'careers.html', 'privacy.html', 'updates.html', '404.html', 'owner.html', 'owner.css', 'owner.js', 'brand-tokens.css', 'styles.css', 'showcase.css', 'script.js', 'robots.txt'];
+const publicFiles = ['index.html', 'careers.html', 'privacy.html', 'updates.html', '404.html', 'owner.html', 'owner.css', 'owner.js', 'brand-tokens.css', 'styles.css', 'showcase.css', 'script.js', 'robots.txt', 'google0a9687274ca52e4f.html'];
 const pages = [
   { file: 'index.html', route: '/', index: true },
   { file: 'careers.html', route: '/careers.html', index: true },
@@ -17,11 +18,13 @@ for (const file of publicFiles) fs.copyFileSync(path.join(root, file), path.join
 fs.cpSync(path.join(root, 'assets'), path.join(out, 'assets'), { recursive: true });
 for (const legacy of ['croptera-logo.png', 'hero-farmer.png', 'piyush-koli.jpg', 'problem-strip.png', 'showcase-triptych.png', 'field.svg']) fs.rmSync(path.join(out, 'assets', legacy), { force: true });
 
-// Set SITE_URL to the verified production origin before a public release.
-const siteUrl = process.env.SITE_URL?.replace(/\/+$/, '') || '';
-if (siteUrl) {
-  if (!/^https:\/\/[^\s/?#]+$/.test(siteUrl)) throw new Error('SITE_URL must be an HTTPS origin without a path');
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.filter(page => page.index).map(page => `  <url><loc>${siteUrl}${page.route}</loc></url>`).join('\n')}\n</urlset>\n`;
+// SITE_URL can override the verified production origin for another deployment.
+const siteUrl = (process.env.SITE_URL || 'https://the-hok-me.vercel.app').replace(/\/+$/, '');
+if (!/^https:\/\/[^\s/?#]+$/.test(siteUrl)) throw new Error('SITE_URL must be an HTTPS origin without a path');
+buildServicePages(out, siteUrl);
+{
+  const sitemapPages = [...pages.filter(page => page.index).map(page => page.route), ...services.map(service => `/services/${service.slug}`)];
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPages.map(route => `  <url><loc>${siteUrl}${route}</loc></url>`).join('\n')}\n</urlset>\n`;
   fs.writeFileSync(path.join(out, 'sitemap.xml'), xml);
   fs.appendFileSync(path.join(out, 'robots.txt'), `Sitemap: ${siteUrl}/sitemap.xml\n`);
 
@@ -67,7 +70,7 @@ if (siteUrl) {
   }
 }
 
-console.log(`Built ${out}${siteUrl ? ` for ${siteUrl}` : ' without production canonical URLs or sitemap'}`);
+console.log(`Built ${out} for ${siteUrl}`);
 
 
 
