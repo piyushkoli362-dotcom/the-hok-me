@@ -22,7 +22,8 @@ for (const service of services) {
   titles.add(title);
   if (canonical !== `https://the-hok-me.vercel.app/services/${service.slug}`) throw new Error(`Incorrect canonical on ${service.slug}.`);
   if (!sitemapUrls.includes(canonical)) throw new Error(`${service.slug} is not included in sitemap.`);
-  if (JSON.parse(jsonLd)['@type'] !== 'Service') throw new Error(`Invalid Service JSON-LD on ${service.slug}.`);
+  const graph = JSON.parse(jsonLd)['@graph'];
+  if (!graph.some(node => node['@type'] === 'Service') || !graph.some(node => node['@type'] === 'BreadcrumbList')) throw new Error(`Invalid Service/Breadcrumb JSON-LD on ${service.slug}.`);
 }
 const original = fs.readFileSync('google0a9687274ca52e4f.html');
 const deployedAsset = fs.readFileSync(`${root}/google0a9687274ca52e4f.html`);

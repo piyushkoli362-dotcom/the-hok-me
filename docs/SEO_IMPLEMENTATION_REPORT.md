@@ -22,11 +22,19 @@ Prepared 26 October 2026 for `https://the-hok-me.vercel.app/`.
 
 ## Validation
 
-To be populated after checks and production deployment: build and repo checks; per-route status/metadata; verification-file byte equality; sitemap contents; robots response; unknown-route 404; owner noindex and API privacy; mobile visual and performance checks.
+- `npm run check` passed; inquiry validation and source-page checks passed.
+- `npm run build` passed; SEO build validation passed for 14 unique pages, metadata, service schema, canonical URLs, sitemap and owner exclusion.
+- The verification file's source and built SHA-256 both equal `5EFA0244F358A466EEE2D2EE0185A585E37EE3047E605B68D91E77611B68C8C1`.
+- Production: all 14 service URLs returned HTTP 200 with the intended canonical URL.
+- Production: `/google0a9687274ca52e4f.html`, `/robots.txt` and `/sitemap.xml` returned HTTP 200. The verification endpoint returned Google's original token text.
+- Production sitemap contained 17 canonical public URLs and excluded owner/API routes.
+- Production `/owner.html` returned HTTP 200 with `noindex,nofollow`; unauthenticated owner session API returned 401; an unknown route returned 404.
+- No mobile device visual test, Lighthouse run or field Core Web Vitals measurement was completed, so none is claimed.
 
 ## Not verified / follow-up
 
 - Google Search Console ownership, sitemap submission, URL indexing and query performance require the owner to finish verification in the Google account.
+- In Search Console, verify the URL-prefix property `https://the-hok-me.vercel.app/`, then submit `https://the-hok-me.vercel.app/sitemap.xml`. The verification file is live; the account-level verification action was not performed.
 - No analytics provider or credentials are configured, so conversion events are not sent.
 - Search volume, difficulty, CPC and ranking estimates are unavailable and intentionally not fabricated.
 - Run PageSpeed Insights/Lighthouse and check field Core Web Vitals after release. No score or ranking gain is claimed.
